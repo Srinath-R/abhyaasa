@@ -1,12 +1,10 @@
 package sri.sort;
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.Arrays;
 
 public class GenericQuickSort {
 
-    public <T extends Comparable<T>>  void sort(@NotNull  T[] unsorted) {
+    public <T extends Comparable<T>> void sort(T[] unsorted) {
         System.out.println("Input array is >>>>>>>>>");
         Arrays.stream(unsorted).forEach(System.out::println);
         quickSort(unsorted,0,unsorted.length-1);
@@ -14,7 +12,7 @@ public class GenericQuickSort {
         Arrays.stream(unsorted).forEach(System.out::println);
     }
 
-    private <E extends Comparable<E>> void quickSort(@NotNull E[] arr,int low,int high) {
+    private <E extends Comparable<E>> void quickSort(E[] arr, int low, int high) {
         if(low < high) {
             int pivotIndex = partition(arr, low, high);
             quickSort(arr, low, pivotIndex - 1);
@@ -22,7 +20,7 @@ public class GenericQuickSort {
         }
     }
 
-    private <E extends Comparable<E>> int partition(@NotNull E[] arr, int low, int high) {
+    private <E extends Comparable<E>> int partition(E[] arr, int low, int high) {
         E pivot = arr[high];
         //lower index
         int i = low-1;

@@ -1,11 +1,9 @@
 package sri.sort;
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.stream.IntStream;
 
 public class MergeSort {
-    public void sort(@NotNull int[] unsorted) {
+    public void sort(int[] unsorted) {
         System.out.println("Given unsorted array is >>>>>>>>>");
         IntStream.of(unsorted).forEach(System.out::println);
         mergeSort(unsorted, 0, unsorted.length - 1);
@@ -13,7 +11,7 @@ public class MergeSort {
         IntStream.of(unsorted).forEach(System.out::println);
     }
 
-    private void mergeSort(@NotNull int[] arr, int left, int right) {
+    private void mergeSort(int[] arr, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
@@ -22,7 +20,7 @@ public class MergeSort {
         }
     }
 
-    private void merge(@NotNull int[] arr, int left, int mid, int right) {
+    private void merge(int[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
 
@@ -48,7 +46,7 @@ public class MergeSort {
             arr[k++] = leftArr[i++];
         }
 
-        //copy remaining elements of right array
+        //copy remaining elements of  right array
         while (j < n2) {
             arr[k++] = rightArr[j++];
         }

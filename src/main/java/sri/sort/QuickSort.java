@@ -1,7 +1,6 @@
 package sri.sort;
 
 
-import com.sun.istack.internal.NotNull;
 
 import java.util.Arrays;
 
@@ -11,7 +10,7 @@ public class QuickSort {
         Arrays.stream(unsorted).forEach(System.out::println);
     }
 
-    private void quickSort(@NotNull int[] arr, int low, int high) {
+    private void quickSort(int[] arr, int low, int high) {
         if(low < high) {
             //partitioned index
             int pi = partition(arr,low,high);
@@ -20,7 +19,7 @@ public class QuickSort {
         }
     }
 
-    private int partition(@NotNull int[] arr, int low, int high) {
+    private int partition(int[] arr, int low, int high) {
         int i = low-1;
         int pivot = arr[high];
         for(int j=low;j<high;j++) {

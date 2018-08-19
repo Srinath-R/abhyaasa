@@ -1,7 +1,5 @@
 package sri.sort;
 
-import com.sun.istack.internal.NotNull;
-
 import java.lang.reflect.Array;
 import java.util.stream.Stream;
 
@@ -11,7 +9,7 @@ public class GenericMergeSort {
      * @param <T> Type of the array elements.Each element must implement <tt>java.lang.Comparable</tt>
      * @param unsorted Array to be sorted.
      */
-    public <T extends Comparable<T>> void sort(@NotNull T[] unsorted) {
+    public <T extends Comparable<T>> void sort(T[] unsorted) {
         System.out.println("Given array is :");
         Stream.of(unsorted).forEach(System.out::println);
         mergeSort(unsorted,0,unsorted.length-1);
@@ -19,7 +17,7 @@ public class GenericMergeSort {
         Stream.of(unsorted).forEach(System.out::println);
     }
 
-    private <E extends Comparable<E>>void mergeSort(@NotNull E[] array, int left, int right) {
+    private <E extends Comparable<E>> void mergeSort(E[] array, int left, int right) {
         if(left < right) {
             int mid = (right + left) / 2;
             mergeSort(array, left, mid);
@@ -28,7 +26,8 @@ public class GenericMergeSort {
         }
     }
 
-    private <E extends Comparable<E>> void merge(@NotNull E[] array, int left, int mid, int right) {
+    @SuppressWarnings("unchecked")
+    private <E extends Comparable<E>> void merge(E[] array, int left, int mid, int right) {
         int leftRange = mid-left+1;
         int rightRange = right-mid;
 
