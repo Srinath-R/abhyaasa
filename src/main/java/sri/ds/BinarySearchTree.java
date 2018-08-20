@@ -1,4 +1,4 @@
-package sri.search;
+package sri.ds;
 
 public class BinarySearchTree {
 	public class Node {
