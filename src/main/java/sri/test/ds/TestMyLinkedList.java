@@ -26,6 +26,8 @@ public class TestMyLinkedList {
         list.loopFirstAndLast();
         System.out.println("Detect cycle.");
         System.out.println(list.hasCycle());
+
+
     }
 
 }

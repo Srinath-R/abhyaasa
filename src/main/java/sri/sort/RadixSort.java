@@ -1,6 +1,7 @@
 package sri.sort;
 
 import java.util.Arrays;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 public class RadixSort {
@@ -14,8 +15,8 @@ public class RadixSort {
     }
 
     private void radixSort(int[] arr, int n) {
-        int max = IntStream.of(arr).max().getAsInt();
-
+        OptionalInt optMax = IntStream.of(arr).max();
+        int max = optMax.isPresent() ? optMax.getAsInt() : -1;
         for (int exp = 1; max / exp > 0; exp *= 10) {
             countSort(arr, n, exp);
         }
