@@ -23,7 +23,6 @@ public class WordCountExecutor {
             executor.submit(new WordCounter(Files.lines(filePath1), countMap)).get();
             executor.submit(new WordCounter(Files.lines(filePath2), countMap)).get();
             executor.submit(new WordCounter(Files.lines(filePath3),countMap)).get();
-
             executor.shutdown();
         } catch (IOException | InterruptedException | ExecutionException e) {
             e.printStackTrace();
