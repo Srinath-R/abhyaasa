@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class WordCounter implements Runnable {
     private final Stream<String> lines;
-    private transient final Map<String, Integer> countMap;
+    private final Map<String, Integer> countMap;
 
     public WordCounter(Stream<String> stream, Map<String, Integer> countMap) {
         this.lines = stream;
@@ -35,11 +35,9 @@ public class WordCounter implements Runnable {
 
     public static void main(String[] args) {
         Path filePath = Paths.get("src\\main\\resources\\input.txt");
-        try {
-            final Stream<String> lines = Files.lines(filePath);
+        try(Stream<String> lines = Files.lines(filePath)) {
             Map<String,Integer> countMap = new ConcurrentHashMap<>();
-            WordCounter wordCounter = new WordCounter(lines,countMap);
-            wordCounter.countWords();
+            new WordCounter(lines,countMap).countWords();
             countMap.forEach((key, value) -> System.out.format("%s->%d%n", key, value));
         } catch (IOException e) {
             e.printStackTrace();
