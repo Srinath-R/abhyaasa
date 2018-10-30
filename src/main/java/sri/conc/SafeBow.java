@@ -82,7 +82,6 @@ public class SafeBow {
     public static void main(String[] args) {
         final Friend seenu = new Friend("Seenu");
         final Friend subbu = new Friend("Subbu");
-
         new Thread(new BowRunner(seenu,subbu)).start();
         new Thread(new BowRunner(subbu,seenu)).start();
     }
