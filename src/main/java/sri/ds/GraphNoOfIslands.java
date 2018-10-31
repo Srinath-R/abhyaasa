@@ -1,7 +1,10 @@
 package sri.ds;
 
+/**
+ * Count number of islands in a graph.
+ * https://www.geeksforgeeks.org/find-number-of-islands/
+ */
 public class GraphNoOfIslands {
-    //FIXME returning improper value
     public int count(int[][] graph) {
         boolean[][] visited = new boolean[graph.length][graph.length];
         int count = 0;
@@ -17,20 +20,24 @@ public class GraphNoOfIslands {
     }
 
     private void dfs(int[][] graph, boolean[][] visited, int i, int j) {
-        if(i < 0 || j < 0 ||
-            i == graph.length || j == graph[i].length) {
-            return;
-        }
         visited[i][j] = true;
         if(graph[i][j] == 0)
             return;
-        dfs(graph,visited,i,j+1);
-        dfs(graph,visited,i+1,j);
-        dfs(graph,visited,i+1,j+1);
-        dfs(graph,visited,i-1,j+1);
+        int[] rowOffsetArray = {-1,-1,-1,0,0,1,1,1};
+        int[] columnOffsetArray = {-1,0,1,-1,1,-1,0,1};
+
+        for(int k = 0; k < rowOffsetArray.length; k++) {
+            int rowOffset = i+rowOffsetArray[k];
+            int colOffset = j+columnOffsetArray[k];
+            boolean canVisit = (rowOffset > -1) && (rowOffset < graph.length) &&
+                    (colOffset > -1) && (colOffset < graph[rowOffset].length) && !visited[rowOffset][colOffset];
+            if(canVisit)
+                dfs(graph,visited,rowOffset,colOffset);
+        }
     }
 
     public static void main(String[] args) {
+        // has 5 islands.
         int[][] matrix =
                 {
                         {1,1,0,0,0},
@@ -39,6 +46,19 @@ public class GraphNoOfIslands {
                         {0,0,0,0,0},
                         {1,0,1,0,1}
                 };
+
+        //has 1 island.
+        int[][] matrix2 =
+                {
+                        {1,1,0,0,0},
+                        {0,1,0,0,1},
+                        {0,0,1,1,1},
+                        {0,0,1,0,0},
+                        {0,0,1,0,0}
+                };
+
         System.out.println(new GraphNoOfIslands().count(matrix));
+        System.out.println(new GraphNoOfIslands().count(matrix2));
     }
+
 }
