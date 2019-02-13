@@ -1,4 +1,4 @@
-package sri.misc;
+package sri.ds;
 
 
 public class ConnectSameLevelNodes {
