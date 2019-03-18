@@ -1,5 +1,10 @@
 package sri.misc;
 
+/*
+    BoolletProblem link
+    https://github.com/PuzzlesLab/UVA/blob/master/King/00637%20Booklet%20Printing.java
+
+ */
 public class PowerSum {
     public int powerSum(int x, int n) {
         return calc(x, n, 1, 0);
