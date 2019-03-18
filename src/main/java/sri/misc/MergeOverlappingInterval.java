@@ -2,7 +2,8 @@ package sri.misc;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class MergeOverlappingInterval {
     public static class Interval {
@@ -43,7 +44,7 @@ public class MergeOverlappingInterval {
     public static Interval[] merge(Interval[] overlapping) {
         Arrays.sort(overlapping, Comparator.comparing(Interval::getStart));
 
-        Stack<Interval> stack = new Stack<>();
+        Deque<Interval> stack = new LinkedList<>();
         stack.push(overlapping[0]);
 
         for(int i=0; i<overlapping.length; i++) {
@@ -59,7 +60,7 @@ public class MergeOverlappingInterval {
 
         Interval[] res = new Interval[stack.size()];
         int j=0;
-        while (!stack.empty()) {
+        while (!stack.isEmpty()) {
             res[j++] = stack.pop();
         }
         return res;
